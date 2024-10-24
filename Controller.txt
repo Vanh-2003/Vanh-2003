@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.UI.WebControls.WebParts;
+using kttx1.Models;
+
+namespace kttx1.Controllers
+{
+
+    [Route("[controller]")]
+    public class QuanLyHocVienController : Controller
+    {
+        static List<HocVien> danhsach = new List<HocVien>();
+
+        public QuanLyHocVienController()
+        {
+            //c1
+            if (danhsach.Count <= 0)
+            {
+                HocVien hv1 = new HocVien("haui01", "Nguyen Van A", 16, 1);
+                HocVien hv2 = new HocVien("haui02", "Nguyen Van B", 22, 2);
+                HocVien hv3 = new HocVien("haui03", "Nguyen Van C", 21, 2);
+                HocVien hv4 = new HocVien("haui04", "Nguyen Van D", 19, 1);
+                HocVien hv5 = new HocVien("haui05", "Nguyen Van E", 12, 2);
+                HocVien hv6 = new HocVien("haui06", "Nguyen Van F", 29, 1);
+                HocVien hv7 = new HocVien("haui07", "Nguyen Van G", 28, 2);
+                danhsach.Add(hv1);
+                danhsach.Add(hv2);
+                danhsach.Add(hv3);
+                danhsach.Add(hv4);
+                danhsach.Add(hv5);
+                danhsach.Add(hv6);
+                danhsach.Add(hv7);
+            }
+
+            //c2
+            //danhsach = new List<SinhVien>
+            //{
+            //      new HocVien("haui01", "Nguyen Van A", 16, 1),
+            //      new HocVien("haui01", "Nguyen Van A", 16, 1),
+            //      new HocVien("haui01", "Nguyen Van A", 16, 1),
+            //.....
+            //};
+
+        }
+        // GET: trang tong ket
+        [HttpGet]
+        [Route("TongKet")]
+        public ActionResult TongKet()
+        {
+            //cau lenh lamda lay danh sach cac hoc vien co tong diem>=23
+            var ds = danhsach.Where(d => d.TongDiem >= 23).ToList(); //lay danh sach
+            return View(ds); //cho danh sach vao view
+        }
+
+        // GET: trang thi dat
+        [HttpGet]
+        [Route("ThiDat")]
+        public ActionResult ThiDat()
+        {
+            //cau lenh lamda lay danh sach cac hoc vien co diem thi>22
+            var ds = danhsach.Where(d => d.diemthi > 22).ToList(); //lay danh sach
+            return View(ds); //cho danh sach vao view
+        }
+        public ActionResult NhapThongTin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NhapThongTin(FormCollection f)
+        {
+            string mahv, hoten;
+            float diemthi, uutien;
+            mahv = f["mahv"];
+            hoten = f["hoten"];
+            diemthi = float.Parse(f["diemthi"]);
+            uutien = float.Parse(f["uutien"]);
+            HocVien hv = new HocVien(mahv, hoten, diemthi, uutien);
+            danhsach.Add(hv);
+            return RedirectToAction("HienThi");
+        }
+        public ActionResult HienThi()
+        {
+
+        return View(danhsach);
+        }
+    }
+}

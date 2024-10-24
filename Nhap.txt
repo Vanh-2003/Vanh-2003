@@ -1,0 +1,27 @@
+
+@{
+    ViewBag.Title = "NhapThongTin";
+}
+
+<h2>Nhập thông tin</h2>
+<form action="/QuanLyHocVien/NhapThongTin" method="post">
+    <div>
+        <label for="mahv">Mã Học Viên:</label>
+        <input type="text" id="mahv" name="mahv" required />
+    </div>
+    <div>
+        <label for="hoten">Họ và Tên:</label>
+        <input type="text" id="hoten" name="hoten" required />
+    </div>
+    <div>
+        <label for="diemthi">Điểm Thi:</label>
+        <input type="number" id="diemthi" name="diemthi" required />
+    </div>
+    <div>
+        <label for="uutien">Điểm Ưu Tiên:</label>
+        <input type="number" id="uutien" name="uutien" required />
+    </div>
+    <div>
+        <button type="submit">Thêm Học Viên</button>
+    </div>
+</form>

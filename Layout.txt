@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTTX1</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            font-family: Tahoma;
+        }
+        h1{
+            color: #FFF;
+            margin:0;
+        }
+        a{
+            text-decoration: none;
+            color: #FFF;
+            margin-right: 30px;
+        }
+        .c-title {
+
+            background-color: #FF6600;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .container {
+            margin: 0;
+        }
+        .menu{
+            justify-content:right;
+            text-align:right;
+            height:30px;
+            line-height:30px;
+        }
+    </style>
+   
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <div class="c-title">
+                <h1>BÀI ÔN TẬP KIỂM TRA THỬ SỐ 1</h1>
+            </div>
+            <div class="menu" style="background-color: #BE0000;">
+                @Html.ActionLink("Tổng kết", "TongKet", "QuanLyHocVien") |  @Html.ActionLink("Thi đạt", "ThiDat", "QuanLyHocVien") |  @Html.ActionLink("Nhập thông tin", "NhapThongTin", "QuanLyHocVien")
+                    
+                   
+                   
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

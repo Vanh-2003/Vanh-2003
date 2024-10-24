@@ -1,0 +1,49 @@
+
+@{
+    ViewBag.Title = "TongKet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<h2> Tổng Kết</h2>
+<div class="tabledata">
+    <table>
+        <tr style="border: 1px solid #000;">
+            <th>Ma hoc vien</th>
+            <th>Ten hoc vien</th>
+            <th>Diem thi</th>
+            <th>Diem uu tien</th>
+            <th>Tong diem</th>
+        </tr>
+        @foreach (var ds in Model)
+        {
+            <tr>
+                <td>@ds.mahv</td>
+                <td>@ds.hoten</td>
+                <td>@ds.diemthi</td>
+                <td>@ds.uutien</td>
+                <td>@ds.TongDiem</td>
+            </tr>
+        }
+
+    </table>
+</div>
+
